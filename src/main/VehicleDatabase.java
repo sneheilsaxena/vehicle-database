@@ -1,19 +1,22 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class VehicleDatabase {
 
-    ArrayList<Vehicle> vehicles = new ArrayList<>();
+    private ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-    public static void main (String [] args) {
-        System.out.println("Bruh momento");
-        Scanner in = new Scanner(System.in);
+    private void addEntry (int ID, int year, String make, String model) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setID(ID);
+        vehicle.setYear(year);
+        vehicle.setMake(make);
+        vehicle.setModel(model);
+        vehicles.add(vehicle);
+    }
 
-        String inp = in.nextLine();
-
-        System.out.println(inp);
+    VehicleDatabase () {
 
     }
+
 }
