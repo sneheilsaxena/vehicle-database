@@ -6,10 +6,9 @@ public class Database {
 
     private HashMap<Integer, Vehicle> vehicles = new HashMap<>();
 
-    public void addEntry(int ID, int year, String make, String model) {
+    public String addEntry(int ID, int year, String make, String model) {
         if (vehicles.containsKey(ID)) {
-            System.out.println("Record with that ID already exists in the database.");
-            return;
+            return "Record with that ID already exists in the database.";
         }
         Vehicle vehicle = new Vehicle();
         vehicle.setID(ID);
@@ -17,37 +16,39 @@ public class Database {
         vehicle.setMake(make);
         vehicle.setModel(model);
         vehicles.put(ID, vehicle);
+        return "Added successfully.\n";
     }
 
-    public void retrieveSingleEntry(int ID) {
+    public String retrieveSingleEntry(int ID) {
         if (vehicles.containsKey(ID)) {
-            System.out.println(vehicles.get(ID) + "\n");
+            return vehicles.get(ID) + "\n";
         } else {
-            System.out.println("Record not found");
+            return "Record not found.\n";
         }
     }
 
-    public void retrieveAllEntries() {
+    public String retrieveAllEntries() {
 
         if (vehicles.isEmpty()) {
-            System.out.println("No entries in the database.");
-            return;
+            return "No entries in the database.";
         }
 
+        String toReturn = "";
         // Iterate through the hashmap
-        System.out.println("List of vehicles (in no particular order):");
+        toReturn += "List of vehicles (in no particular order):\n";
 
         for (Vehicle entry : vehicles.values()) {
-            System.out.println(entry);
+            toReturn += entry;
+            toReturn += "\n";
         }
 
-        System.out.println();
+        toReturn += "\n";
+        return toReturn;
     }
 
-    public void updateEntry(int ID, int year, String make, String model) {
+    public String updateEntry(int ID, int year, String make, String model) {
         if (!vehicles.containsKey(ID)) {
-            System.out.println("No record with that ID exists in the database. Please try again.\n");
-            return;
+            return "No record with that ID exists in the database. Please try again.\n";
         }
         Vehicle vehicle = new Vehicle();
         vehicle.setID(ID);
@@ -55,17 +56,22 @@ public class Database {
         vehicle.setMake(make);
         vehicle.setModel(model);
         vehicles.put(ID, vehicle);
+        return "Updated successfully.\n";
     }
 
-    public void deleteEntry(int ID) {
+    public String deleteEntry(int ID) {
         if (!vehicles.containsKey(ID)) {
-            System.out.println("No record with that ID exists in the database. Please try again.\n");
-            return;
+            return "No record with that ID exists in the database. Please try again.\n";
         }
         vehicles.remove(ID);
+        return "Deleted succesfully.\n";
     }
 
-    Database() {
+    public int getSize() {
+        return vehicles.size();
+    }
+
+    public Database() {
 
     }
 

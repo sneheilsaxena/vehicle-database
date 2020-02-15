@@ -53,18 +53,18 @@ public class VehicleDatabase {
                     in.nextLine();
                     String make = in.nextLine();
                     String model = in.nextLine();
-                    db.addEntry(ID, year, make, model);
+                    System.out.println(db.addEntry(ID, year, make, model));
                     break;
                 }
                 case "RA": {
-                    db.retrieveAllEntries();
+                    System.out.println(db.retrieveAllEntries());
                     break;
                 }
                 case "R": {
                     printRetrieveOptions();
                     int ID = in.nextInt();
                     in.nextLine();
-                    db.retrieveSingleEntry(ID);
+                    System.out.println(db.retrieveSingleEntry(ID));
                     break;
                 }
                 case "U": {
@@ -74,14 +74,14 @@ public class VehicleDatabase {
                     in.nextLine();
                     String make = in.nextLine();
                     String model = in.nextLine();
-                    db.updateEntry(ID, year, make, model);
+                    System.out.println(db.updateEntry(ID, year, make, model));
                     break;
                 }
                 case "D": {
                     printDeleteOptions();
                     int ID = in.nextInt();
                     in.nextLine();
-                    db.deleteEntry(ID);
+                    System.out.println(db.deleteEntry(ID));
                     break;
                 }
                 default: {
