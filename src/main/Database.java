@@ -28,7 +28,6 @@ public class Database {
     }
 
     public String retrieveAllEntries() {
-
         if (vehicles.isEmpty()) {
             return "No entries in the database.";
         }
@@ -60,6 +59,9 @@ public class Database {
     }
 
     public String deleteEntry(int ID) {
+        if (this.getSize() == 0) {
+            return "There are no entries in the table right now.";
+        }
         if (!vehicles.containsKey(ID)) {
             return "No record with that ID exists in the database. Please try again.\n";
         }
